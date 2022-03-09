@@ -46,10 +46,12 @@ public class SpeedGamesTest {
     @Test
     public void speedCheck4() {
 
-        String[] speeds = {"Kolya 5","Vasya 0","Petya 2"};
+        NameWinners.isGreenLight = false;
+        NameWinners.MaxSpeed = 3;
+        String[] namesPlayers = {"Коля 5","Вася 0","Петя 2"};
 
-        String[] expected = {"Vasya"};
-        String[] actual = Winners.namesWinners(speeds);
+        String[] expected = {"Вася", "Петя"};
+        String[] actual = NameWinners.speeds(namesPlayers);
 
         Assertions.assertArrayEquals(expected, actual);
     }

@@ -3,37 +3,44 @@ public class NameWinners {
     public static int MaxSpeed = 3;
 
 
-    public static String[] speeds (String[] namesWinners) {
+    public static String[] speeds(String[] namesPlayers) {
 
 
-
-        if (isGreenLight == false) {
-
-            int x = 0;
-            for (String name : namesWinners) {
-                String[] parts = name.split(" ");
-
-                int i = Integer.parseInt(parts[1]);
+        int x = 0;
+        for (String name : namesPlayers) {
+            String[] parts = name.split(" ");
+            int i = Integer.parseInt(parts[1]);
+            if (isGreenLight) {
+                x++;
+            } else {
                 if (i <= MaxSpeed) {
-                    x++;
+                    if (i >= 0) {
+                        x++;
+                    }
+                } else {
+                    continue;
                 }
             }
-
-            for (String name : namesWinners) {
-                String[] namesWinner = new String[x];
-                String[] parts = name.split(" ");
-                int i = Integer.parseInt(parts[1]);
-
+        }
+        String[] namesWinner = new String[x];
+        int cnt = 0;
+        for (String name : namesPlayers) {
+            String[] parts = name.split(" ");
+            int i = Integer.parseInt(parts[1]);
+            if (isGreenLight) {
+                namesWinner[cnt] = parts[0];
+                cnt++;
+            } else {
                 if (i <= MaxSpeed) {
-                    namesWinner[x] = parts[0];
+                    if (i >= 0) {
+                        namesWinner[cnt] = parts[0];
+                        cnt++;
+                    }
                 }
-
             }
-
-
         }
 
-        return namesWinners;
+        return namesWinner;
     }
 }
 
